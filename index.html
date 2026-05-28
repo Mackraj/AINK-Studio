@@ -1,0 +1,290 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ANIK Studio</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+
+<img src="IMG_8800.png" alt="ANIK Logo">
+
+<h1>ANIK STUDIO</h1>
+
+</div>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#manga">Upcoming Manga</a>
+
+<a href="#account">Join</a>
+
+</nav>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>INDIAN <span>MANGA</span> UNIVERSE</h1>
+
+<p>
+A premium Indian manga platform inspired by Japanese storytelling.
+Dark action worlds, anime aesthetics and cinematic manga experiences are coming soon.
+</p>
+
+<a href="#manga" class="btn">
+COMING SOON
+</a>
+
+</div>
+
+</section>
+
+<!-- MANGA SECTION -->
+
+<section class="section" id="manga">
+
+<h2 class="section-title">
+UPCOMING MANGA
+</h2>
+
+<div class="manga-grid">
+
+<!-- FIRST MANGA -->
+
+<div class="card">
+
+<img 
+src="5-2-coming-soon-png-image-thumb.png" 
+alt="Upcoming Manga"
+>
+
+<div class="card-content">
+
+<h2>COMING SOON</h2>
+
+<p>
+A action manga universe is arriving soon.
+Official title and first chapter reveal coming soon on ANIK Studio.
+</p>
+
+<div class="coming">
+TITLE NOT REVEALED
+</div>
+
+</div>
+
+</div>
+
+<!-- SECOND MANGA -->
+
+<div class="card">
+<img 
+src="images.png" 
+alt="Upcoming Manga">
+
+<div class="card-content">
+
+<h2>COMING SOON</h2>
+
+<p>
+A new sports manga inspired by Indian streets and anime culture.
+Stay tuned for the official reveal.
+</p>
+
+<div class="coming">
+TITLE NOT REVEALED
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ACCOUNT SECTION -->
+
+<div class="account-section" id="account">
+
+<h2>CREATE ACCOUNT</h2>
+
+<p>
+Join ANIK Studio to get notifications for new manga chapters,
+poster reveals and upcoming manga updates.
+</p>
+
+<form>
+
+<input 
+type="email" 
+id="email"
+placeholder="Enter Your Email"
+required
+>
+
+<input 
+type="password" 
+id="password"
+placeholder="Create Password"
+required
+>
+
+<button 
+type="button"
+onclick="createAccount()"
+>
+Create Account
+</button>
+
+<br><br>
+
+<button 
+type="button"
+onclick="loginAccount()"
+>
+Login
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 ANIK Studio | Premium Manga Platform
+
+</footer>
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+/* FIREBASE CONFIG */
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyBHzsLkBIlWlSuJOe-BMuxWnNls9JnVIqY",
+    authDomain: "anik-studio-44beb.firebaseapp.com",
+    projectId: "anik-studio-44beb",
+    storageBucket: "anik-studio-44beb.firebasestorage.app",
+    messagingSenderId: "356835644956",
+    appId: "1:356835644956:web:df4346536772deb90b31d9",
+    measurementId: "G-Y60SRTQC67"
+
+};
+
+/* INITIALIZE FIREBASE */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getfirestore(app);
+
+/* Sign Up */
+import {
+createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+doc,
+setDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+async function signup() {
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+const username = document.getElementById("username").value;
+
+try {
+
+const userCredential =
+await createUserWithEmailAndPassword(auth, email, password);
+
+const user = userCredential.user;
+
+await setDoc(doc(db, "users", user.uid), {
+username: username,
+email: email,
+createdAt: new Date()
+});
+
+alert("Account Created!");
+
+} catch (error) {
+alert(error.message);
+}
+}
+
+/* Login */
+
+import {
+signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+async function login() {
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+try {
+
+await signInWithEmailAndPassword(auth, email, password);
+
+alert("Login Successful!");
+
+window.location.href = "home.html";
+
+} catch (error) {
+alert(error.message);
+}
+}
+
+</script>
+
+</body>
+</html>
+```
+
+```
+
+
